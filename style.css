@@ -1,0 +1,18 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.logo {
+  padding-top: 20px;
+}
