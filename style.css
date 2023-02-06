@@ -3,6 +3,7 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
+  background-color: #98aaba;
 }
 
 .container {
@@ -10,9 +11,16 @@ html {
   flex-direction: column;
   width: 96%;
   margin: 0 auto;
-  align-items: center;
+  align-content: center;
+  text-align: center;
 }
 
 .logo {
   padding-top: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000000, 0 0 25px #0000ff, 0 0 5px #00008b;
 }
