@@ -33,7 +33,7 @@ h1 {
   border-radius: 10px;
 }
 
-.income {
+.income, .spending {
   border: 1px #ffffff solid;
 }
 
@@ -45,6 +45,6 @@ h1 {
   margin-top: 10px;
 }
 
-#income {
-  margin-bottom: 2px;
+#income, #spending {
+  margin: 5px 0;
 }
