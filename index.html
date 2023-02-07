@@ -26,8 +26,19 @@
       <div class="budget-information">
         <span>Tutaj pojawi się informacja o Twoim budżecie!</span>
       </div>
-      Miejsce na wyświetlanie informacji o budżecie Tabelka z przychodami i
-      wydatkami
+      <div class="tabel">
+        <div class="income">
+          <form>
+            <label for="income">Income:</label>
+            <input type="text" id="income" name="income" placeholder="Name of income"><br>
+            <label for="value">Value:</label>
+            <input type="number" id="value" name="value" placeholder="Value of income"><br>
+            <input type="submit" value="Add">
+            <hr>
+          </form>
+        </div>
+        <div class="spending"></div>
+      </div>
     </div>
   </body>
 </html>
