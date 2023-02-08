@@ -2,6 +2,7 @@ let incomes = [];
 
 /* 
 Przychód (income) będzie obiektem: 
+@income:
 {
   id: Number,
   title: String,
@@ -15,6 +16,17 @@ const incomeName = document.getElementById("income");
 const incomeValue = document.getElementById("valueIncome");
 const incomeForm = document.getElementById("income-form");
 const sumIncome = document.getElementById("sumIncome");
+
+const renderInput = (income) => {
+  const newIncome = document.createElement("div");
+  newIncome.id = `income-${income.id}`;
+
+  const incomeTitleAndValue = document.createElement("p");
+  incomeTitleAndValue.innerHTML = `<span>${income.title} - ${income.value}</span>`;
+
+  newIncome.appendChild(incomeTitleAndValue);
+  incomeTabel.appendChild(newIncome);
+}
 
 const addIncome = (event) => {
   event.preventDefault();
@@ -30,8 +42,10 @@ const addIncome = (event) => {
     isCompleted: false,
   }
 
-  console.log(income);
   incomes.push(income);
+  renderInput(income);
+  incomeName.value = "";
+  incomeValue.value = "";
 };
 
 incomeForm.addEventListener("submit", addIncome);
