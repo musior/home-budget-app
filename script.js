@@ -65,7 +65,6 @@ const addIncome = (event) => {
   renderInput(income);
   calcSumIncome();
   sumBudget();
-  console.log(sum);
   incomeName.value = "";
   incomeValue.value = "";
 };
