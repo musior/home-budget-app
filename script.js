@@ -16,6 +16,8 @@ const incomeName = document.getElementById("income");
 const incomeValue = document.getElementById("valueIncome");
 const incomeForm = document.getElementById("income-form");
 const sumIncome = document.getElementById("sumIncome");
+const totalBudget = document.getElementById("total-budget");
+let sum = 0;
 
 const renderInput = (income) => {
   const newIncome = document.createElement("div");
@@ -29,9 +31,20 @@ const renderInput = (income) => {
 }
 
 const calcSumIncome = () => {
-  const sumIncome = document.getElementById("sumIncome");
-  const sum = incomes.map(element => Number(element.value)).reduce((a,b) => a + b, 0);
+  sum = incomes.map(element => Number(element.value)).reduce((a, b) => a + b);
   sumIncome.innerText = sum;
+}
+
+const sumBudget = () => {
+  if (sum < 0) {
+    totalBudget.innerText = `Your are under the budget, current budget is ${sum} zł.`
+  } 
+  if (sum == 0) {
+    totalBudget.innerText = `Your current budget is ${sum} zł.`
+  } 
+  if (sum > 0) {
+    totalBudget.innetText = `Your current budget is ${sum} zł.`
+  }
 }
 
 const addIncome = (event) => {
@@ -51,6 +64,8 @@ const addIncome = (event) => {
   incomes.push(income);
   renderInput(income);
   calcSumIncome();
+  sumBudget();
+  console.log(sum);
   incomeName.value = "";
   incomeValue.value = "";
 };
