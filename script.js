@@ -28,6 +28,12 @@ const renderInput = (income) => {
   incomeTabel.appendChild(newIncome);
 }
 
+const calcSumIncome = () => {
+  const sumIncome = document.getElementById("sumIncome");
+  const sum = incomes.map(element => Number(element.value)).reduce((a,b) => a + b, 0);
+  sumIncome.innerText = sum;
+}
+
 const addIncome = (event) => {
   event.preventDefault();
   const incomeTitle = incomeName.value;
@@ -44,6 +50,7 @@ const addIncome = (event) => {
 
   incomes.push(income);
   renderInput(income);
+  calcSumIncome();
   incomeName.value = "";
   incomeValue.value = "";
 };
