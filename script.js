@@ -31,17 +31,20 @@ const spendingTabel = document.getElementById("spending-tabel");
 const spendingName = document.getElementById("spending");
 const spendingValue = document.getElementById("valueSpending");
 const spendingForm = document.getElementById("spending-form");
+const sumSpending = document.getElementById("sumSpending");
 
 const totalBudget = document.getElementById("total-budget");
 
-let sum = 0;
+let sumTotal = 0;
+let incomeSum = 0;
+let spendingSum = 0;
 
 const renderInput = (income) => {
   const newIncome = document.createElement("div");
   newIncome.id = `income-${income.id}`;
 
   const incomeTitleAndValue = document.createElement("p");
-  incomeTitleAndValue.innerHTML = `<span>${income.title} - ${income.value} zł</span>`;
+  incomeTitleAndValue.innerHTML = `<span>${income.title} - ${income.value} PLN</span>`;
 
   newIncome.appendChild(incomeTitleAndValue);
   incomeTabel.appendChild(newIncome);
@@ -52,27 +55,31 @@ const renderSpending = (spending) => {
   newSpending.id = `spending-${spending.id}`;
 
   const spendingTitleAndValue = document.createElement("p");
-  spendingTitleAndValue.innerHTML = `<span>${spending.title} - ${spending.value} zł</span>`;
+  spendingTitleAndValue.innerHTML = `<span>${spending.title} - ${spending.value} PLN</span>`;
 
   newSpending.appendChild(spendingTitleAndValue);
   spendingTabel.appendChild(newSpending);
 }
 
 const calcSumIncome = () => {
-  sum = incomes.map(element => Number(element.value)).reduce((a, b) => a + b);
-  sumIncome.innerText = sum;
+  incomeSum = incomes.map(element => Number(element.value)).reduce((a, b) => a + b);
+  sumIncome.innerText = incomeSum;
 }
 
-const sumBudget = () => {
-  if (sum < 0) {
-    totalBudget.innerText = `Your are under the budget, current budget is ${sum} zł.`
-  } 
-  if (sum == 0) {
-    totalBudget.innerText = `Your current budget is ${sum} zł.`
-  } 
-  if (sum > 0) {
-    totalBudget.innetText = `Your current budget is ${sum} zł.`
-  }
+const calcSumSpending = () => {
+  spendingSum = spendings.map(element => Number(element.value)).reduce((a, b) => a + b);
+  sumSpending.innerText = spendingSum;
+}
+
+const sumBudget = (incomeSum, spendingSum) => {
+  sumTotal = incomeSum - spendingSum;
+  if (sumTotal > 0) {
+    totalBudget.innerText = `You can still spend ${sumTotal} PLN.`;
+  } else if (sumTotal < 0) {
+    totalBudget.innerText = `The balance is negative. You are in negative ${(-sumTotal)} PLN.`;
+  } else {
+    totalBudget.innerText = `The balance is zero PLN.`;
+  }  
 }
 
 const addIncome = (event) => {
@@ -92,7 +99,7 @@ const addIncome = (event) => {
   incomes.push(income);
   renderInput(income);
   calcSumIncome();
-  sumBudget();
+  sumBudget(incomeSum, spendingSum);
   incomeName.value = "";
   incomeValue.value = "";
 };
@@ -113,6 +120,8 @@ const addSpending = (event) => {
 
   spendings.push(spending);
   renderSpending(spending);
+  calcSumSpending();
+  sumBudget(incomeSum, spendingSum);
   spendingName.value = "";
   spendingValue.value = "";
 }
