@@ -1,5 +1,5 @@
 let incomes = [];
-
+let spendings = [];
 /* 
 Przychód (income) będzie obiektem: 
 @income:
@@ -7,7 +7,16 @@ Przychód (income) będzie obiektem:
   id: Number,
   title: String,
   value: Number,
-  isCompleted: Boolean
+  isDeleted: Boolean
+}
+
+Wydatki (spending) będą również obiektem: 
+@spending:
+{
+  id: Number,
+  title: String,
+  value: Number,
+  isDeleted: Boolean
 }
 */
 
@@ -16,7 +25,15 @@ const incomeName = document.getElementById("income");
 const incomeValue = document.getElementById("valueIncome");
 const incomeForm = document.getElementById("income-form");
 const sumIncome = document.getElementById("sumIncome");
+
+
+const spendingTabel = document.getElementById("spending-tabel");
+const spendingName = document.getElementById("spending");
+const spendingValue = document.getElementById("valueSpending");
+const spendingForm = document.getElementById("spending-form");
+
 const totalBudget = document.getElementById("total-budget");
+
 let sum = 0;
 
 const renderInput = (income) => {
@@ -24,10 +41,21 @@ const renderInput = (income) => {
   newIncome.id = `income-${income.id}`;
 
   const incomeTitleAndValue = document.createElement("p");
-  incomeTitleAndValue.innerHTML = `<span>${income.title} - ${income.value}</span>`;
+  incomeTitleAndValue.innerHTML = `<span>${income.title} - ${income.value} zł</span>`;
 
   newIncome.appendChild(incomeTitleAndValue);
   incomeTabel.appendChild(newIncome);
+}
+
+const renderSpending = (spending) => {
+  const newSpending = document.createElement("div");
+  newSpending.id = `spending-${spending.id}`;
+
+  const spendingTitleAndValue = document.createElement("p");
+  spendingTitleAndValue.innerHTML = `<span>${spending.title} - ${spending.value} zł</span>`;
+
+  newSpending.appendChild(spendingTitleAndValue);
+  spendingTabel.appendChild(newSpending);
 }
 
 const calcSumIncome = () => {
@@ -58,8 +86,8 @@ const addIncome = (event) => {
     id: incomeId,
     title: incomeTitle,
     value: valueOfIncome,
-    isCompleted: false,
-  }
+    isDeleted: false,
+  };
 
   incomes.push(income);
   renderInput(income);
@@ -69,4 +97,25 @@ const addIncome = (event) => {
   incomeValue.value = "";
 };
 
+const addSpending = (event) => {
+  event.preventDefault();
+  const spendingTitle = spendingName.value;
+  const valueOfSpending = spendingValue.value;
+
+  const spendingId = Date.now();
+
+  const spending = {
+    id: spendingId,
+    title: spendingTitle,
+    value: valueOfSpending,
+    isDeleted: false,
+  };
+
+  spendings.push(spending);
+  renderSpending(spending);
+  spendingName.value = "";
+  spendingValue.value = "";
+}
+
 incomeForm.addEventListener("submit", addIncome);
+spendingForm.addEventListener("submit", addSpending);

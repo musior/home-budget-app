@@ -1,3 +1,7 @@
+.container-table {
+  display: flex;
+}
+
 /* body,
 html {
   margin: 0;
