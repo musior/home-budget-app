@@ -26,17 +26,34 @@
       <div class="budget-information">
         <span id="total-budget">Tutaj pojawi się informacja o Twoim budżecie!</span>
       </div>
-      <div class="form-container">
-          <form id="income-form">
-            <label for="income">Income:</label>
-            <input type="text" id="income" name="income" placeholder="Name of income"><br>
-            <label for="valueIncome">Value:</label>
-            <input type="number" id="valueIncome" name="value" placeholder="Value of income"><br>
-            <button id="submit-income" class="btn" type="submit">Add income!</button>
-          </form>
+      <div class="container-table">
+        <div class="container-income">
+          <div class="form-container">
+              <form id="income-form">
+                <label for="income">Income:</label>
+                <input type="text" id="income" name="income" placeholder="Name of income"><br>
+                <label for="valueIncome">Value:</label>
+                <input type="number" id="valueIncome" name="value" placeholder="Value of income"><br>
+                <button id="submit-income" class="btn" type="submit">Add income!</button>
+              </form>
+          </div>
+          <div id="income-tabel"></div>
+          <p>Total income: <span id="sumIncome"></span>zł</p>
+        </div>
+        <div class="container-spending">
+          <div class="form-container">
+              <form id="spending-form">
+                <label for="spending">Spending:</label>
+                <input type="text" id="spending" name="spending" placeholder="Name of spending"><br>
+                <label for="valueSpending">Value:</label>
+                <input type="number" id="valueSpending" name="value" placeholder="Value of spending"><br>
+                <button id="submit-spending" class="btn" type="submit">Add spending!</button>
+              </form>
+          </div>
+          <div id="spending-tabel"></div>
+          <p>Total spending: <span id="sumSpending"></span>zł</p>
+        </div>
       </div>
-      <div id="income-tabel"></div>
-      <p>Total income: <span id="sumIncome"></span>zł</p>
     </div>
     <script src="script.js"></script>
   </body>
