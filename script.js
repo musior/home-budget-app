@@ -54,9 +54,9 @@ const calcSum = (table, sumField) => {
   sum = table.map(element => Number(element.value)).reduce((a, b) => a + b);
   sumField.innerText = sum;
   if (sumField === sumIncome) {
-    incomeSum += sum;
+    incomeSum = sum;
   } else {
-    spendingSum += sum;
+    spendingSum = sum;
   };
 }
 

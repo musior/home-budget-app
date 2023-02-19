@@ -1,53 +1,52 @@
-.container-table {
-  display: flex;
-}
-
- body,
-html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.container {
+body {
+  background-color: #1c1d26;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  width: 96%;
-  margin: 0 auto;
-  align-content: center;
+  font-family: "Work Sans", sans-serif;
+  font-size: 28px;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1,
+span,
+p, label, input, button {
+  font-family: "Audiowide", cursive;
+}
+
+.container-table {
+  display: flex;
+  justify-content: center;
+}
+
+#main-section {
   text-align: center;
-  flex-wrap: wrap;
-}
-/*
-.logo {
-  padding-top: 20px;
+  width: 96%;
 }
 
-h1 {
-  font-size: 24px;
-  color: #ffffff;
-  text-shadow: 1px 1px 2px #000000, 0 0 25px #0000ff, 0 0 5px #00008b;
+.form-container, .btn, .form-container-input {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  font-size: 16px;
+  color:#fff;
+  outline: none;
+  width: 350px;
 }
 
-.budget-information {
-  padding: 10px 0;
-  margin: 15px 0;
-  border: 2px solid #000000;
-  border-radius: 10px;
+.form-container {
+  height: 130px;
+  padding: 15px 30px;
 }
 
-.income, .spending {
-  border: 1px #ffffff solid;
+.form-container-input {
+  background: transparent;
+  border: 2px solid #fff;
+  margin: 5px;
 }
-
-.button {
-  background-color: #44aa8f8a;
-  padding: 5px 10px;
-  border-color: #760808;
-  border-radius: 5px;
-  margin-top: 10px;
+.form-container-input:focus {
+  border-color: #9b413f;
 }
-
-#income, #spending {
-  margin: 5px 0;
-} */
