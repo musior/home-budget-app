@@ -42,11 +42,26 @@ let spendingSum = 0;
 const renderElement = (budget, table) => {
   const newElement = document.createElement("div");
   newElement.id = `element-${budget.id}`;
+  newElement.classList.add("budget-list");
 
   const elementTitleAndValue = document.createElement("p");
+  elementTitleAndValue.classList.add("budget-item");
   elementTitleAndValue.innerHTML = `<span>${budget.title} - ${budget.value} PLN</span>`;
 
+  const budgetAction = document.createElement("div");
+  budgetAction.classList.add("budget-action");
+
+  const editBudget = document.createElement("button");
+  const deleteBudget = document.createElement("button");
+  
+  editBudget.innerText = "🖊️";
+  deleteBudget.innerText = "❌";
+
+  budgetAction.appendChild(editBudget);
+  budgetAction.appendChild(deleteBudget);
+
   newElement.appendChild(elementTitleAndValue);
+  newElement.appendChild(budgetAction);
   table.appendChild(newElement);
 }
 
