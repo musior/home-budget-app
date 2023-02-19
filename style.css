@@ -2,12 +2,11 @@
   display: flex;
 }
 
-/* body,
+ body,
 html {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #98aaba;
 }
 
 .container {
@@ -19,7 +18,7 @@ html {
   text-align: center;
   flex-wrap: wrap;
 }
-
+/*
 .logo {
   padding-top: 20px;
 }

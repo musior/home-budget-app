@@ -39,36 +39,25 @@ let sumTotal = 0;
 let incomeSum = 0;
 let spendingSum = 0;
 
-const renderInput = (income) => {
-  const newIncome = document.createElement("div");
-  newIncome.id = `income-${income.id}`;
+const renderElement = (budget, table) => {
+  const newElement = document.createElement("div");
+  newElement.id = `element-${budget.id}`;
 
-  const incomeTitleAndValue = document.createElement("p");
-  incomeTitleAndValue.innerHTML = `<span>${income.title} - ${income.value} PLN</span>`;
+  const elementTitleAndValue = document.createElement("p");
+  elementTitleAndValue.innerHTML = `<span>${budget.title} - ${budget.value} PLN</span>`;
 
-  newIncome.appendChild(incomeTitleAndValue);
-  incomeTabel.appendChild(newIncome);
+  newElement.appendChild(elementTitleAndValue);
+  table.appendChild(newElement);
 }
 
-const renderSpending = (spending) => {
-  const newSpending = document.createElement("div");
-  newSpending.id = `spending-${spending.id}`;
-
-  const spendingTitleAndValue = document.createElement("p");
-  spendingTitleAndValue.innerHTML = `<span>${spending.title} - ${spending.value} PLN</span>`;
-
-  newSpending.appendChild(spendingTitleAndValue);
-  spendingTabel.appendChild(newSpending);
-}
-
-const calcSumIncome = () => {
-  incomeSum = incomes.map(element => Number(element.value)).reduce((a, b) => a + b);
-  sumIncome.innerText = incomeSum;
-}
-
-const calcSumSpending = () => {
-  spendingSum = spendings.map(element => Number(element.value)).reduce((a, b) => a + b);
-  sumSpending.innerText = spendingSum;
+const calcSum = (table, sumField) => {
+  sum = table.map(element => Number(element.value)).reduce((a, b) => a + b);
+  sumField.innerText = sum;
+  if (sumField === sumIncome) {
+    incomeSum += sum;
+  } else {
+    spendingSum += sum;
+  };
 }
 
 const sumBudget = (incomeSum, spendingSum) => {
@@ -97,8 +86,8 @@ const addIncome = (event) => {
   };
 
   incomes.push(income);
-  renderInput(income);
-  calcSumIncome();
+  renderElement(income, incomeTabel);
+  calcSum(incomes,sumIncome);
   sumBudget(incomeSum, spendingSum);
   incomeName.value = "";
   incomeValue.value = "";
@@ -119,8 +108,8 @@ const addSpending = (event) => {
   };
 
   spendings.push(spending);
-  renderSpending(spending);
-  calcSumSpending();
+  renderElement(spending, spendingTabel);
+  calcSum(spendings, sumSpending);
   sumBudget(incomeSum, spendingSum);
   spendingName.value = "";
   spendingValue.value = "";
