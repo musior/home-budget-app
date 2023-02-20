@@ -53,10 +53,22 @@ const renderElement = (budget, table) => {
 
   const editBudget = document.createElement("button");
   const deleteBudget = document.createElement("button");
-  
+  editBudget.classList.add("tooltip");
+  deleteBudget.classList.add("tooltip");
+
   editBudget.innerText = "🖊️";
   deleteBudget.innerText = "❌";
 
+  const tooltipTextEdit = document.createElement("span");
+  const tooltipTextDelete = document.createElement("span");
+  tooltipTextEdit.classList.add("tooltiptext");
+  tooltipTextDelete.classList.add("tooltiptext");
+  tooltipTextEdit.innerText = "Edit";
+  tooltipTextDelete.innerText = "Delete";
+
+  editBudget.appendChild(tooltipTextEdit);
+  deleteBudget.appendChild(tooltipTextDelete);
+  
   budgetAction.appendChild(editBudget);
   budgetAction.appendChild(deleteBudget);
 
