@@ -7,7 +7,6 @@ body {
   font-size: 28px;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   margin: 0;
 }
 
@@ -26,6 +25,13 @@ p, label, input, button {
 #main-section {
   text-align: center;
   width: 96%;
+  height: 100vh;
+}
+
+.image {
+  width: 350px;
+  height: 350px;
+  margin-top: 25px;
 }
 
 .form-container, .btn, .form-container-input {
@@ -61,6 +67,7 @@ p, label, input, button {
 .btn:hover {
   border-color:#f8312f;
   color:#f8312f;
+  scale: 1.05;
 }
 
 .information-container {
@@ -94,4 +101,9 @@ p, label, input, button {
   cursor: pointer;
   outline: none;
   border: none;
+  transition-duration: 1s;
+}
+
+.budget-action button:hover {
+  scale: 1.5;
 }
