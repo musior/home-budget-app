@@ -6,8 +6,7 @@ Przychód (income) będzie obiektem:
 {
   id: Number,
   title: String,
-  value: Number,
-  isDeleted: Boolean
+  value: Number
 }
 
 Wydatki (spending) będą również obiektem: 
@@ -15,8 +14,7 @@ Wydatki (spending) będą również obiektem:
 {
   id: Number,
   title: String,
-  value: Number,
-  isDeleted: Boolean
+  value: Number
 }
 */
 
@@ -39,6 +37,21 @@ let sumTotal = 0;
 let incomeSum = 0;
 let spendingSum = 0;
 
+/* Function to remove selected income or spending */
+const removeElement = (event, tableId) => {
+  incomes = incomes.filter((item) => item.id !== tableId);
+  spendings = spendings.filter((item) => item.id !== tableId);
+
+  const element = event.currentTarget;
+  const elementParent = element.closest(".budget-list");
+  elementParent.remove();
+
+  calcSum(incomes, sumIncome);
+  calcSum(spendings, sumSpending);
+  sumBudget(incomeSum, spendingSum);
+}
+
+/* Function to render income or spending on the screen */
 const renderElement = (budget, table) => {
   const newElement = document.createElement("div");
   newElement.id = `element-${budget.id}`;
@@ -53,6 +66,8 @@ const renderElement = (budget, table) => {
 
   const editBudget = document.createElement("button");
   const deleteBudget = document.createElement("button");
+
+  deleteBudget.addEventListener("click", (e) => removeElement(e, budget.id));
   editBudget.classList.add("tooltip");
   deleteBudget.classList.add("tooltip");
 
@@ -68,7 +83,7 @@ const renderElement = (budget, table) => {
 
   editBudget.appendChild(tooltipTextEdit);
   deleteBudget.appendChild(tooltipTextDelete);
-  
+
   budgetAction.appendChild(editBudget);
   budgetAction.appendChild(deleteBudget);
 
@@ -78,7 +93,7 @@ const renderElement = (budget, table) => {
 }
 
 const calcSum = (table, sumField) => {
-  sum = table.map(element => Number(element.value)).reduce((a, b) => a + b);
+  sum = table.map(element => Number(element.value)).reduce((a, b) => a + b, 0);
   sumField.innerText = sum;
   if (sumField === sumIncome) {
     incomeSum = sum;
@@ -95,7 +110,7 @@ const sumBudget = (incomeSum, spendingSum) => {
     totalBudget.innerText = `The balance is negative. You are in negative ${(-sumTotal)} PLN.`;
   } else {
     totalBudget.innerText = `The balance is zero PLN.`;
-  }  
+  }
 }
 
 const addIncome = (event) => {
@@ -108,13 +123,12 @@ const addIncome = (event) => {
   const income = {
     id: incomeId,
     title: incomeTitle,
-    value: valueOfIncome,
-    isDeleted: false,
+    value: valueOfIncome
   };
 
   incomes.push(income);
   renderElement(income, incomeTabel);
-  calcSum(incomes,sumIncome);
+  calcSum(incomes, sumIncome);
   sumBudget(incomeSum, spendingSum);
   incomeName.value = "";
   incomeValue.value = "";
@@ -130,8 +144,7 @@ const addSpending = (event) => {
   const spending = {
     id: spendingId,
     title: spendingTitle,
-    value: valueOfSpending,
-    isDeleted: false,
+    value: valueOfSpending
   };
 
   spendings.push(spending);
