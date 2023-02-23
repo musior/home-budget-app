@@ -67,7 +67,10 @@ const editElement = (event, table) => {
   const buttonToConfirmEdit = document.createElement("button");
 
   div.classList.add("budget-action");
+  editTitleInput.classList.add("form-container-input");
+  editValueInput.classList.add("form-container-input");
   buttonToConfirmEdit.classList.add("tooltip");
+  buttonToConfirmEdit.type = "submit";
   buttonToConfirmEdit.innerHTML = `✔️ <span class="tooltiptext">Confirm</span>`;
 
   editTitleInput.type = "text";
@@ -81,6 +84,12 @@ const editElement = (event, table) => {
   div.appendChild(buttonToConfirmEdit);
   elementParent.appendChild(div);
   
+  buttonToConfirmEdit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const element = e.currentTarget;
+    const elementParent = element.closest(".budget-list");
+    console.log(elementParent);
+  });
 }
 
 /* Function to render income or spending on the screen */
