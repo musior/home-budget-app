@@ -51,6 +51,25 @@ const removeElement = (event, tableId) => {
   sumBudget(incomeSum, spendingSum);
 }
 
+/* Function to edit income or spending */
+const editElement = (event, table) => {
+  // incomes = incomes.filter((item) => item.id !== tableId);
+  // spendings = spendings.filter((item) => item.id !== tableId);
+  console.log(table);
+  const element = event.currentTarget;
+  const elementParent = element.closest(".budget-list");
+  elementParent.innerHTML = "";
+
+  const editForm = document.createElement("form");
+  const editInput = document.createElement("input");
+  editInput.type = "text";
+  editInput.value = `${table.title} - ${table.value} PLN`;
+  
+  editForm.appendChild(editInput);  
+  elementParent.appendChild(editForm);
+  
+}
+
 /* Function to render income or spending on the screen */
 const renderElement = (budget, table) => {
   const newElement = document.createElement("div");
@@ -68,6 +87,7 @@ const renderElement = (budget, table) => {
   const deleteBudget = document.createElement("button");
 
   deleteBudget.addEventListener("click", (e) => removeElement(e, budget.id));
+  editBudget.addEventListener("click", (e) => editElement(e, budget));
   editBudget.classList.add("tooltip");
   deleteBudget.classList.add("tooltip");
 
