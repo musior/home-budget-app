@@ -61,7 +61,8 @@ const editElement = (event, table) => {
   elementParent.innerHTML = "";
 
   const editForm = document.createElement("form");
-  const editInput = document.createElement("input");
+  const editTitleInput = document.createElement("input");
+  const editValueInput = document.createElement("input");
   const div = document.createElement("div");
   const buttonToConfirmEdit = document.createElement("button");
 
@@ -69,10 +70,13 @@ const editElement = (event, table) => {
   buttonToConfirmEdit.classList.add("tooltip");
   buttonToConfirmEdit.innerHTML = `✔️ <span class="tooltiptext">Confirm</span>`;
 
-  editInput.type = "text";
-  editInput.placeholder = `${table.title} - ${table.value} PLN`;
+  editTitleInput.type = "text";
+  editValueInput.type = "text";
+  editTitleInput.value = `${table.title}`;
+  editValueInput.value = `${table.value}`;
   
-  editForm.appendChild(editInput);  
+  editForm.appendChild(editTitleInput);
+  editForm.appendChild(editValueInput);
   elementParent.appendChild(editForm);
   div.appendChild(buttonToConfirmEdit);
   elementParent.appendChild(div);
