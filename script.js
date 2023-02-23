@@ -62,11 +62,20 @@ const editElement = (event, table) => {
 
   const editForm = document.createElement("form");
   const editInput = document.createElement("input");
+  const div = document.createElement("div");
+  const buttonToConfirmEdit = document.createElement("button");
+
+  div.classList.add("budget-action");
+  buttonToConfirmEdit.classList.add("tooltip");
+  buttonToConfirmEdit.innerHTML = `✔️ <span class="tooltiptext">Confirm</span>`;
+
   editInput.type = "text";
-  editInput.value = `${table.title} - ${table.value} PLN`;
+  editInput.placeholder = `${table.title} - ${table.value} PLN`;
   
   editForm.appendChild(editInput);  
   elementParent.appendChild(editForm);
+  div.appendChild(buttonToConfirmEdit);
+  elementParent.appendChild(div);
   
 }
 
