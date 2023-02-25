@@ -69,6 +69,8 @@ const editElement = (event, budget, table) => {
   editTitleInput.setAttribute("name", "editTitle");
   editTitleInput.setAttribute("id", "editTitle");
   editValueInput.classList.add("form-container-input");
+  editValueInput.setAttribute("name", "editValue");
+  editValueInput.setAttribute("id", "editValue");
   buttonToConfirmEdit.classList.add("tooltip");
   buttonToConfirmEdit.type = "submit";
   buttonToConfirmEdit.innerHTML = `✔️ <span class="tooltiptext">Confirm</span>`;
