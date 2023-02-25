@@ -52,15 +52,13 @@ const removeElement = (event, tableId) => {
 }
 
 /* Function to edit income or spending */
-const editElement = (event, table) => {
-  // incomes = incomes.filter((item) => item.id !== tableId);
-  // spendings = spendings.filter((item) => item.id !== tableId);
-  console.log(table);
+const editElement = (event, budget, table) => {
   const element = event.currentTarget;
   const elementParent = element.closest(".budget-list");
   elementParent.innerHTML = "";
 
   const editForm = document.createElement("form");
+  editForm.classList.add("editedForm");
   const editTitleInput = document.createElement("input");
   const editValueInput = document.createElement("input");
   const div = document.createElement("div");
@@ -68,27 +66,33 @@ const editElement = (event, table) => {
 
   div.classList.add("budget-action");
   editTitleInput.classList.add("form-container-input");
+  editTitleInput.setAttribute("name", "editTitle");
+  editTitleInput.setAttribute("id", "editTitle");
   editValueInput.classList.add("form-container-input");
   buttonToConfirmEdit.classList.add("tooltip");
   buttonToConfirmEdit.type = "submit";
   buttonToConfirmEdit.innerHTML = `✔️ <span class="tooltiptext">Confirm</span>`;
 
   editTitleInput.type = "text";
-  editValueInput.type = "text";
-  editTitleInput.value = `${table.title}`;
-  editValueInput.value = `${table.value}`;
-  
+  editValueInput.type = "number";
+  editTitleInput.value = `${budget.title}`;
+  editValueInput.value = `${budget.value}`;
+
   editForm.appendChild(editTitleInput);
   editForm.appendChild(editValueInput);
   elementParent.appendChild(editForm);
   div.appendChild(buttonToConfirmEdit);
   elementParent.appendChild(div);
-  
+
   buttonToConfirmEdit.addEventListener("click", (e) => {
     e.preventDefault();
-    const element = e.currentTarget;
-    const elementParent = element.closest(".budget-list");
-    console.log(elementParent);
+    elementParent.remove();
+    budget.title = editTitleInput.value;
+    budget.value = editValueInput.value;
+    renderElement(budget, table);
+    calcSum(incomes, sumIncome);
+    calcSum(spendings, sumSpending);
+    sumBudget(incomeSum, spendingSum);
   });
 }
 
@@ -109,7 +113,7 @@ const renderElement = (budget, table) => {
   const deleteBudget = document.createElement("button");
 
   deleteBudget.addEventListener("click", (e) => removeElement(e, budget.id));
-  editBudget.addEventListener("click", (e) => editElement(e, budget));
+  editBudget.addEventListener("click", (e) => editElement(e, budget, table));
   editBudget.classList.add("tooltip");
   deleteBudget.classList.add("tooltip");
 
