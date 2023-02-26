@@ -113,6 +113,20 @@ p, label, input, button {
   position: absolute;
 }
 
+.error-info {
+  border: 2px solid #f8312f;
+  border-radius: 15px;
+  font-size: 16px;
+  padding: 1em;
+  display: none;
+  margin-bottom: 1em;
+  color: #f8312f;
+}
+
+.visible {
+  display: block;
+}
+
 @media screen and (min-width:376px) {
   .form-container-input {
     width: 68%;

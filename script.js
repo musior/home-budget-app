@@ -32,6 +32,7 @@ const spendingForm = document.getElementById("spending-form");
 const sumSpending = document.getElementById("sumSpending");
 
 const totalBudget = document.getElementById("total-budget");
+const errorInfo = document.getElementById("error-info");
 
 let sumTotal = 0;
 let incomeSum = 0;
@@ -166,6 +167,25 @@ const addIncome = (event) => {
   const incomeTitle = incomeName.value;
   const valueOfIncome = incomeValue.value;
 
+  if (!incomeTitle) {
+    errorInfo.classList.add("visible");
+    errorInfo.innerText = "Your income name can not be empty!";
+    incomeName.value = "";
+    incomeValue.value = "";
+    return;
+  };
+
+  if (valueOfIncome <= 0) {
+    errorInfo.classList.add("visible");
+    errorInfo.innerText = "Your income value can not be less than 0!";
+    incomeName.value = "";
+    incomeValue.value = "";
+    return;
+  }
+
+  errorInfo.classList.remove("visible");
+  errorInfo.innerText = "";
+
   const incomeId = Date.now();
 
   const income = {
@@ -186,6 +206,25 @@ const addSpending = (event) => {
   event.preventDefault();
   const spendingTitle = spendingName.value;
   const valueOfSpending = spendingValue.value;
+
+  if (!spendingTitle) {
+    errorInfo.classList.add("visible");
+    errorInfo.innerText = "Your spending name can not be empty!";
+    spendingName.value = "";
+    spendingValue.value = "";
+    return;
+  };
+
+  if (valueOfSpending <= 0) {
+    errorInfo.classList.add("visible");
+    errorInfo.innerText = "Your spending value can not be less than 0!";
+    spendingName.value = "";
+    spendingValue.value = "";
+    return;
+  }
+
+  errorInfo.classList.remove("visible");
+  errorInfo.innerText = "";
 
   const spendingId = Date.now();
 
