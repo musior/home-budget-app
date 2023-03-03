@@ -17,6 +17,14 @@ p, label, input, button {
   margin: 5px;
 }
 
+h1 {
+  font-size: 34px;
+}
+
+#header {
+  margin: 15px;
+}
+
 .container-table {
   display: inline;
   justify-content: center;
@@ -34,17 +42,23 @@ p, label, input, button {
   margin-top: 25px;
 }
 
+.budget-information {
+  margin-bottom: 15px;
+}
+
 .form-container, .btn, .form-container-input {
   background: transparent;
   border: 2px solid #fff;
   border-radius: 15px;
-  font-size: 16px;
+  font-size: 14px;
   color:#fff;
   outline: none;
 }
 
 .form-container {
   height: fit-content;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .form-container-input {
@@ -53,6 +67,7 @@ p, label, input, button {
   margin: 5px;
   padding: 12px 20px;
   box-sizing: border-box;
+  width: 235px;
 }
 .form-container-input:focus {
   border-color: #9b413f;
@@ -70,6 +85,11 @@ p, label, input, button {
   border-radius: 15px;
   background-color: #15161c;
   padding: 0.15em;
+  margin-bottom: 15px;
+}
+
+#spending-tabel, #income-tabel {
+  padding: 5px;
 }
 
 .budget-list {
@@ -145,8 +165,14 @@ p, label, input, button {
 
 @media screen and (min-width: 768px) {
   .image {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
+  }
+
+  #header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .container-table {
@@ -163,6 +189,7 @@ p, label, input, button {
 
   .container-income, .container-spending {
     width: 50%;
+    margin: 5px;
   }
 
   .form-container-input {
