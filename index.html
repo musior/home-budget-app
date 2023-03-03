@@ -31,15 +31,14 @@
       <div class="budget-information">
         <span id="total-budget">Your budget information will appear here!</span>
       </div>
-      <div id="error-info" class="error-info"></div>
       <div class="container-table">
         <div class="container-income">
           <div class="form-container">
               <form id="income-form">
                 <label for="income">Income:</label>
-                <input type="text" id="income" name="income" placeholder="Name of income" class="form-container-input"><br>
+                <input type="text" id="income" name="income" placeholder="Name of income" class="form-container-input" required><br>
                 <label for="valueIncome">Value:</label>
-                <input type="number" id="valueIncome" name="value" placeholder="Value of income" class="form-container-input" step="0.01"><br>
+                <input type="number" id="valueIncome" name="value" placeholder="Value of income" class="form-container-input" step="0.01" required min="0"><br>
                 <button id="submit-income" class="btn" type="submit">Add income!</button>
               </form>
           </div>
@@ -52,9 +51,9 @@
           <div class="form-container">
               <form id="spending-form">
                 <label for="spending">Spending:</label>
-                <input type="text" id="spending" name="spending" placeholder="Name of spending" class="form-container-input"><br>
+                <input type="text" id="spending" name="spending" placeholder="Name of spending" class="form-container-input" required><br>
                 <label for="valueSpending">Value:</label>
-                <input type="number" id="valueSpending" name="value" placeholder="Value of spending" class="form-container-input" step="0.01"><br>
+                <input type="number" id="valueSpending" name="value" placeholder="Value of spending" class="form-container-input" step="0.01" required min="0"><br>
                 <button id="submit-spending" class="btn" type="submit">Add spending!</button>
               </form>
           </div>
