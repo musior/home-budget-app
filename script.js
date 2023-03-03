@@ -72,6 +72,7 @@ const editElement = (event, budget, table) => {
   editValueInput.classList.add("form-container-input");
   editValueInput.setAttribute("name", "editValue");
   editValueInput.setAttribute("id", "editValue");
+  editValueInput.setAttribute("step", "0.01");
   buttonToConfirmEdit.classList.add("tooltip");
   buttonToConfirmEdit.type = "submit";
   buttonToConfirmEdit.innerHTML = `✔️ <span class="tooltiptext">Confirm</span>`;
@@ -153,6 +154,7 @@ const calcSum = (table, sumField) => {
 
 const sumBudget = (incomeSum, spendingSum) => {
   sumTotal = incomeSum - spendingSum;
+  sumTotal = Number(Math.round(sumTotal + 'e+2') + 'e-2');
   if (sumTotal > 0) {
     totalBudget.innerText = `You can still spend ${sumTotal} PLN.`;
   } else if (sumTotal < 0) {
