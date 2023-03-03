@@ -68,10 +68,10 @@ const editElement = (event, budget, table) => {
   div.classList.add("budget-action");
   editTitleInput.classList.add("form-container-input");
   editTitleInput.setAttribute("name", "editTitle");
-  editTitleInput.setAttribute("id", "editTitle");
+  editTitleInput.classList.add("editTitle");
   editValueInput.classList.add("form-container-input");
   editValueInput.setAttribute("name", "editValue");
-  editValueInput.setAttribute("id", "editValue");
+  editValueInput.classList.add("editValue");
   editValueInput.setAttribute("step", "0.01");
   buttonToConfirmEdit.classList.add("tooltip");
   buttonToConfirmEdit.type = "submit";

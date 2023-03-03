@@ -73,7 +73,7 @@ h1 {
   border-color: #9b413f;
 }
 
-#editTitle, #editValue {
+#editTitle,.editValue {
   width: 220px;
 }
 
@@ -154,7 +154,7 @@ h1 {
 }
 
 @media screen and (min-width: 425px) {
-  #editTitle, #editValue {
+ .editTitle,.editValue {
     width: 300px;
   }
 
@@ -196,7 +196,7 @@ h1 {
     width: 300px;
   }
 
-  #editTitle, #editValue {
+ .editTitle,.editValue {
     width: 280px;
   }
 }
@@ -212,7 +212,7 @@ h1 {
     width: 75%;
   }
 
-  #editTitle, #editValue {
+ .editTitle,.editValue {
     width: 350px;
   }
 
