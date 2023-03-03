@@ -18,14 +18,14 @@ Wydatki (spending) będą również obiektem:
 }
 */
 
-const incomeTabel = document.getElementById("income-tabel");
+const incomeTable = document.getElementById("income-table");
 const incomeName = document.getElementById("income");
 const incomeValue = document.getElementById("valueIncome");
 const incomeForm = document.getElementById("income-form");
 const sumIncome = document.getElementById("sumIncome");
 
 
-const spendingTabel = document.getElementById("spending-tabel");
+const spendingTable = document.getElementById("spending-table");
 const spendingName = document.getElementById("spending");
 const spendingValue = document.getElementById("valueSpending");
 const spendingForm = document.getElementById("spending-form");
@@ -197,7 +197,7 @@ const addIncome = (event) => {
   };
 
   incomes.push(income);
-  renderElement(income, incomeTabel);
+  renderElement(income, incomeTable);
   calcSum(incomes, sumIncome);
   sumBudget(incomeSum, spendingSum);
   incomeName.value = "";
@@ -237,7 +237,7 @@ const addSpending = (event) => {
   };
 
   spendings.push(spending);
-  renderElement(spending, spendingTabel);
+  renderElement(spending, spendingTable);
   calcSum(spendings, sumSpending);
   sumBudget(incomeSum, spendingSum);
   spendingName.value = "";
