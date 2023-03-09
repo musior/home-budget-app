@@ -175,7 +175,12 @@ const sumBudget = (incomeSum, spendingSum) => {
 
 const addIncome = (event) => {
   event.preventDefault();
-  const incomeTitle = incomeName.value;  
+  const incomeTitle = incomeName.value.trim();
+  if (incomeTitle === "") {
+    window.alert("You want to add income with a name consisting of just spaces!");
+    incomeName.focus();
+    return;
+  };
   const valueOfIncome = incomeValue.value;
 
   const incomeId = Date.now();
@@ -196,7 +201,12 @@ const addIncome = (event) => {
 
 const addSpending = (event) => {
   event.preventDefault();
-  const spendingTitle = spendingName.value;
+  const spendingTitle = spendingName.value.trim();
+  if (spendingTitle === "") {
+    window.alert("You want to add spending with a name consisting of just spaces!");
+    spendingName.focus();
+    return;
+  };
   const valueOfSpending = spendingValue.value;
 
   const spendingId = Date.now();
