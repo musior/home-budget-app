@@ -2,12 +2,10 @@ body {
   background-color: #1c1d26;
   color: #fff;
   display: flex;
-  flex-direction: column;
   font-family: "Work Sans", sans-serif;
   font-size: 28px;
   align-items: center;
   justify-content: center;
-  margin: 0;
 }
 
 h1,

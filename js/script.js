@@ -72,6 +72,7 @@ const editElement = (event, budget, table) => {
   editValueInput.setAttribute("name", "editValue");
   editValueInput.classList.add("editValue");
   editValueInput.setAttribute("step", "0.01");
+  editValueInput.setAttribute("min", "0.01");
   buttonToConfirmEdit.classList.add("tooltip");
   buttonToConfirmEdit.type = "submit";
   buttonToConfirmEdit.innerHTML = `✔️ <span class="tooltiptext">Confirm</span>`;
@@ -89,9 +90,18 @@ const editElement = (event, budget, table) => {
 
   buttonToConfirmEdit.addEventListener("click", (e) => {
     e.preventDefault();
-    elementParent.remove();
+    
     budget.title = editTitleInput.value;
+    if (budget.title == false) {
+      window.alert("This field can not be empty!");
+      return;
+    };
     budget.value = editValueInput.value;
+    if (budget.value <= 0) {
+      window.alert("The value can not be empty or less that 0!");
+      return;
+    };
+    elementParent.remove();
     renderElement(budget, table);
     calcSum(incomes, sumIncome);
     calcSum(spendings, sumSpending);
@@ -165,7 +175,7 @@ const sumBudget = (incomeSum, spendingSum) => {
 
 const addIncome = (event) => {
   event.preventDefault();
-  const incomeTitle = incomeName.value;
+  const incomeTitle = incomeName.value;  
   const valueOfIncome = incomeValue.value;
 
   const incomeId = Date.now();
