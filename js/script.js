@@ -81,7 +81,7 @@ const editElement = (event, budget, table) => {
   editValueInput.type = "number";
   editTitleInput.value = `${budget.title}`;
   editValueInput.value = `${budget.value}`;
-
+  
   editForm.appendChild(editTitleInput);
   editForm.appendChild(editValueInput);
   elementParent.appendChild(editForm);
@@ -94,13 +94,17 @@ const editElement = (event, budget, table) => {
     budget.title = editTitleInput.value;
     if (budget.title == false) {
       window.alert("This field can not be empty!");
+      editTitleInput.focus();
       return;
     };
+    
     budget.value = editValueInput.value;
     if (budget.value <= 0) {
       window.alert("The value can not be empty or less that 0!");
+      editValueInput.focus();
       return;
     };
+    budget.value = Number(Math.round(editValueInput.value + 'e+2') + 'e-2');
     elementParent.remove();
     renderElement(budget, table);
     calcSum(incomes, sumIncome);
